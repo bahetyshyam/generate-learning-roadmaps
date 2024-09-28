@@ -1,0 +1,22 @@
+#container {
+    background-color: #242424;
+    height: 100vh;
+    color: rgba(255, 255, 255, .87);
+    z-index: 1;
+}
+
+#inactive_overlay {
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    display: none;
+}
+
+#inactive_overlay[data-sidebar-active="true"] {
+    display: block;
+}

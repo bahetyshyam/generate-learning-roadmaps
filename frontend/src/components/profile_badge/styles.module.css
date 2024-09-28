@@ -1,0 +1,14 @@
+#container {
+    border-radius: 50%;
+    background-color: white;
+    width: 2vw;
+    height: 2vw;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    #container {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+}
