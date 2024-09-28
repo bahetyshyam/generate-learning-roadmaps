@@ -1,0 +1,40 @@
+#container {
+    padding: 0 2vw;
+    height: 7.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#title {
+    font-size: 1.618rem;
+}
+
+.sidebar_icon {
+    width: 1.618rem;
+    height: 1.618rem;
+    cursor: pointer;
+}
+
+#lang_profile {
+    display: flex;
+    align-items: center;
+}
+
+#lang_profile p {
+    font-weight: bold;
+    color: rgba(255, 255, 255, .75);
+    margin-right: 1vmax;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    #container {
+        padding: 0 5vw;
+    }
+
+    .sidebar_icon {
+        width: 5vw;
+        height: 5vw;
+    }
+}
