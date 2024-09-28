@@ -1,0 +1,12 @@
+{
+  "appTitle": "Roadmaps",
+  "formLanguage": "Please select the language you want to use",
+  "formWhatDoYouWantToLearn": "What do you want to learn?",
+  "formChooseYourExpertise": "Choose your expertise",
+  "generateRoadmapButton": "Generate Roadmap",
+  "navbarMyRoadmaps": "My Roadmaps",
+  "loginHeader": "Login or Sign Up",
+  "loginEmail": "Email",
+  "loginPassword": "Password",
+  "loginButton": "Login or Sign Up"
+}

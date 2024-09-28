@@ -1,0 +1,12 @@
+{
+  "appTitle": "Feuilles de route",
+  "formLanguage": "Veuillez sélectionner la langue que vous souhaitez utiliser",
+  "formWhatDoYouWantToLearn": "Que voulez-vous apprendre ?",
+  "formChooseYourExpertise": "Choisissez votre niveau de compétence",
+  "generateRoadmapButton": "Générer la feuille de route",
+  "navbarMyRoadmaps": "Mes feuilles de route",
+  "loginHeader": "Connexion ou Inscription",
+  "loginEmail": "Email",
+  "loginPassword": "Mot de passe",
+  "loginButton": "Connexion ou Inscription"
+}
