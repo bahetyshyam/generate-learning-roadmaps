@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000; /* Black background for dark mode */
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column; /* Stack the form elements vertically */
+  justify-content: center; /* Center contents vertically */
+  align-items: stretch; /* Stretch children to full width */
+  background-color: #222; /* Darker background for the form */
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px; /* Add some space below the header */
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%; /* Full width of the form */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #fff;
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.button {
+  width: 100%; /* Full width of the form */
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}

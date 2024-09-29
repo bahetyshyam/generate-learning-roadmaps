@@ -1,0 +1,20 @@
+{
+  "appTitle": "路线图",
+  "formLanguage": "请选择您要使用的语言",
+  "questions": {
+    "subject": "您想学习什么？",
+    "subject_desc": "回答2个简单问题，以获得您选择领域的清晰路线图。<br /> 今天就开始您的旅程！",
+    "expertise": "选择您在此领域的专业水平。",
+    "expertise_desc": "您如何评估自己在{{field, string}}上的能力？"
+  },
+  "generate_roadmap": "生成路线图",
+  "my_progress": "我的进展",
+  "loginHeader": "登录或注册",
+  "loginUserName": "用户名",
+  "loginPassword": "密码",
+  "loginButton": "登录",
+  "logout": "退出",
+  "my_roadmaps": "我的路线图",
+  "status": "状态",
+  "resource_link": "资源"
+}

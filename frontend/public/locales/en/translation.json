@@ -10,7 +10,7 @@
   "generate_roadmap": "Generate Roadmap",
   "my_progress": "My Progress",
   "loginHeader": "Login or Sign Up",
-  "loginEmail": "Email",
+  "loginUserName": "Username",
   "loginPassword": "Password",
   "loginButton": "Login",
   "logout": "Logout",

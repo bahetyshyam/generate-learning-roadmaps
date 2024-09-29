@@ -1,0 +1,20 @@
+{
+  "appTitle": "Mapas",
+  "formLanguage": "Por favor selecciona el idioma que deseas usar",
+  "questions": {
+    "subject": "¿Qué quieres aprender?",
+    "subject_desc": "Responde 2 preguntas fáciles para obtener una hoja de ruta clara en el campo de tu elección. <br /> ¡Comienza tu viaje hoy!",
+    "expertise": "Elige tu nivel de experiencia en este campo.",
+    "expertise_desc": "¿Cómo te calificas en {{field, string}}?"
+  },
+  "generate_roadmap": "Generar hoja de ruta",
+  "my_progress": "Mi progreso",
+  "loginHeader": "Iniciar sesión o registrarse",
+  "loginUserName": "Nombre de usuario",
+  "loginPassword": "Contraseña",
+  "loginButton": "Iniciar sesión",
+  "logout": "Cerrar sesión",
+  "my_roadmaps": "Mis hojas de ruta",
+  "status": "Estado",
+  "resource_link": "Recurso"
+}
