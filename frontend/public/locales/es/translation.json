@@ -1,20 +1,22 @@
 {
-  "appTitle": "Mapas",
-  "formLanguage": "Por favor selecciona el idioma que deseas usar",
+  "appTitle": "Mapas de Ruta",
+  "formLanguage": "Por favor seleccione el idioma que desea usar",
   "questions": {
     "subject": "¿Qué quieres aprender?",
-    "subject_desc": "Responde 2 preguntas fáciles para obtener una hoja de ruta clara en el campo de tu elección. <br /> ¡Comienza tu viaje hoy!",
+    "subject_desc": "Responde 2 preguntas sencillas para obtener un mapa de ruta claro en un campo de tu elección. <br /> ¡Comienza tu viaje hoy!",
     "expertise": "Elige tu nivel de experiencia en este campo.",
     "expertise_desc": "¿Cómo te calificas en {{field, string}}?"
   },
-  "generate_roadmap": "Generar hoja de ruta",
-  "my_progress": "Mi progreso",
-  "loginHeader": "Iniciar sesión o registrarse",
+  "generate_roadmap": "Generar Mapa de Ruta",
+  "my_progress": "Mi Progreso",
+  "loginHeader": "Iniciar sesión o Registrarse",
   "loginUserName": "Nombre de usuario",
   "loginPassword": "Contraseña",
   "loginButton": "Iniciar sesión",
   "logout": "Cerrar sesión",
-  "my_roadmaps": "Mis hojas de ruta",
+  "my_roadmaps": "Mis Mapas de Ruta",
   "status": "Estado",
-  "resource_link": "Recurso"
+  "resource_link": "Recurso",
+  "logged_in": "Conectado",
+  "expert": "Experto"
 }

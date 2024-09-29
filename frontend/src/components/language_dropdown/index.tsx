@@ -29,7 +29,8 @@ const Dropdown = () => {
             <a
               key={code}
               href={`#${code}`}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setLanguage(code);
                 setOpen(false); // Close the dropdown after selecting a language
               }}
