@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { createRoadmap } from "../../api";
 import { Form } from "../../types";
@@ -18,6 +19,7 @@ type Props = {
 };
 
 export const Description = (props: Props) => {
+  const { t } = useTranslation();
   const { formData, showSubmit, classes, setActiveRoadmap } = props;
   const inputs = Object.values(formData);
   const { userInfo, setLoading } = useContext(AppContext) || {};
@@ -53,7 +55,7 @@ export const Description = (props: Props) => {
         </table>
         {showSubmit && (
           <button id={styles.submit} onClick={generateRoadmap}>
-            Create Roadmap
+            t("generate_roadmap")
           </button>
         )}
       </div>
