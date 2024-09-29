@@ -1,4 +1,4 @@
-import { Form } from "../types";
+import { Form, RoadMapSummary } from "../types";
 
 type LoginResponse =
   | {
@@ -9,6 +9,9 @@ type LoginResponse =
       message: string;
     };
 
+type RoadMapResponse = {
+  results: RoadMapSummary[];
+} | null;
 const API_URL =
   "https://cors-anywhere.herokuapp.com/https://4d2e-131-94-186-13.ngrok-free.app/api/";
 
@@ -33,15 +36,18 @@ export const login = async (username: string, password: string) => {
   }
 };
 
-export const getUserRoadmaps = async () => {
-  const res = await fetch(API_URL + "userroadmaps/?user_id=4", {
+export const getUserRoadmaps = async (userId: number) => {
+  const res = await fetch(API_URL + `userroadmaps/?user_id=${userId}`, {
     headers: {
       "ngrok-skip-browser-warning": "69420",
-      // "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     },
   });
-  console.log(await res.json());
+  const jsonRes = (await res.json()) as RoadMapResponse;
+  if (jsonRes) {
+    localStorage.setItem(userId.toString(), JSON.stringify(jsonRes.results));
+  }
+  return jsonRes?.results;
 };
 
 // getUserRoadmaps();

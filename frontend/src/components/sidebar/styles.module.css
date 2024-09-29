@@ -24,6 +24,45 @@
     color: rgba(255, 255, 255, .87);
 }
 
+#container ul {
+    list-style: none;
+    list-style-position: inside;
+    margin-top: 2rem;
+}
+
+#container ul li {
+    padding: .618rem 1rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: .618rem;
+    font-weight: bold;
+}
+
+#container ul li:hover, #container ul li[data-selected="true"] {
+    background-color: #323232;
+}
+
+#container ul li > p {
+    text-transform: capitalize;
+}
+
+.path {
+    display: flex;
+    align-items: center;
+    background-color: #484848;
+    padding: .309rem;
+    border-radius: .309rem;
+}
+
+.path_icon {
+    margin-left: .309rem;
+    margin-right: .309rem;
+}
+
 .sidebar_icon {
     width: 1.5rem;
     height: 1.5rem;

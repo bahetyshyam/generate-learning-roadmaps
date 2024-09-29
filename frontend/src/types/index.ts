@@ -60,3 +60,10 @@ export type Form = {
       value?: number;
     }
 );
+
+export type RoadMapSummary = {
+  user: number;
+  roadmap: string;
+  topic: string;
+  expertise: number;
+};
