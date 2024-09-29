@@ -49,9 +49,15 @@ export const Sidebar: React.FC<Props> = (props) => {
   }, [close]);
 
   const List = useMemo(() => {
+    const reversed: RoadMapSummary[] = [];
+    if (recentRoadMaps?.length) {
+      for (let i = recentRoadMaps.length - 1; i >= 0; i--) {
+        reversed.push(recentRoadMaps[i]);
+      }
+    }
     return (
       <ul>
-        {recentRoadMaps?.map((summary) => {
+        {reversed.map((summary) => {
           const { expertise, topic, roadmap } = summary || {};
           const onClick = async () => {
             setLoading && setLoading(true);

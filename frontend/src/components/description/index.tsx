@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
-import { createRoadmap } from "../../api";
+import { createRoadmap, getUserRoadmaps } from "../../api";
 import { Form } from "../../types";
 import styles from "./styles.module.css";
 import { AppContext } from "../../contexts/AppContext";
@@ -22,7 +22,8 @@ export const Description = (props: Props) => {
   const { t } = useTranslation();
   const { formData, showSubmit, classes, setActiveRoadmap } = props;
   const inputs = Object.values(formData);
-  const { userInfo, setLoading } = useContext(AppContext) || {};
+  const { userInfo, setLoading, setRecentRoadMaps } =
+    useContext(AppContext) || {};
   const { userId } = userInfo || {};
   const shouldRender = inputs?.some((data) => data.value);
   const generateRoadmap = async () => {
@@ -31,6 +32,10 @@ export const Description = (props: Props) => {
     }
     setLoading && setLoading(true);
     const res = await createRoadmap(userId, formData);
+    if (res?.roadmap?.id) {
+      const recentRms = await getUserRoadmaps(userId);
+      recentRms && setRecentRoadMaps && setRecentRoadMaps(recentRms);
+    }
     setLoading && setLoading(false);
     setActiveRoadmap &&
       setActiveRoadmap({ id: res.roadmap.id, data: res.roadmap.roadmap_json });
