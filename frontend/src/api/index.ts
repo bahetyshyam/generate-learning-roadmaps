@@ -63,7 +63,8 @@ export const getRoadmapById = async (roadmapId: string) => {
 
 export const createRoadmap = async (
   userId: number,
-  formData: Record<number, Form>
+  formData: Record<number, Form>,
+  language: string
 ) => {
   const { value: topic } = formData[0];
   const { value: expertise } = formData[1];
@@ -79,7 +80,7 @@ export const createRoadmap = async (
       topic,
       expertise,
       user_id: userId,
-      language: "en", // TODO: Store in context and read from there.
+      language: language, // TODO: Store in context and read from there.
     }),
   });
 

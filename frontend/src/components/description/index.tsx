@@ -5,6 +5,7 @@ import { Form } from "../../types";
 import styles from "./styles.module.css";
 import { AppContext } from "../../contexts/AppContext";
 import { TreeNode } from "../../types/TreeNode";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 type Props = {
   formData: Record<number, Form>;
@@ -24,6 +25,7 @@ export const Description = (props: Props) => {
   const inputs = Object.values(formData);
   const { userInfo, setLoading, setRecentRoadMaps } =
     useContext(AppContext) || {};
+  const { language } = useContext(LanguageContext);
   const { userId } = userInfo || {};
   const shouldRender = inputs?.some((data) => data.value);
   const generateRoadmap = async () => {
@@ -31,7 +33,7 @@ export const Description = (props: Props) => {
       return;
     }
     setLoading && setLoading(true);
-    const res = await createRoadmap(userId, formData);
+    const res = await createRoadmap(userId, formData, language);
     if (res?.roadmap?.id) {
       const recentRms = await getUserRoadmaps(userId);
       recentRms && setRecentRoadMaps && setRecentRoadMaps(recentRms);

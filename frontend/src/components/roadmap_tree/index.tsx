@@ -1,9 +1,11 @@
 import React from "react";
-import { TreeNode } from "../../types/TreeNode";
+import { ResourceTask, TreeNode } from "../../types/TreeNode";
 import Tree from "react-d3-tree";
 import { mapRoadmapToD3 } from "./mapper";
 import { useCenteredTree } from "./useCenteredTree";
 import styles from "./styles.module.css";
+import { Sidebar } from "../sidebar";
+import { SubTaskList } from "../subtask_list";
 
 type Props = {
   roadmap: TreeNode;
@@ -12,6 +14,10 @@ type Props = {
 export const RoadmapTree = (props: Props) => {
   const { roadmap } = props;
   const [translate, containerRef] = useCenteredTree();
+  const [resourceTask, setResourceTaskList] = React.useState<ResourceTask[]>(
+    []
+  );
+  const [showSubTaskList, setShowSubTaskList] = React.useState(false);
   const nodeSize = { x: 200, y: 200 };
   const treeData = mapRoadmapToD3(roadmap);
   return (
@@ -26,16 +32,23 @@ export const RoadmapTree = (props: Props) => {
         nodeSize={nodeSize}
         data={treeData}
         collapsible={false}
-        // onNodeClick={}
+        onNodeClick={(nodeData) => {
+          console.log(nodeData);
+        }}
         separation={{
           siblings: 3,
           nonSiblings: 3,
         }}
         pathClassFunc={() => styles.link}
         renderCustomNodeElement={({ nodeDatum }) => {
-          const { name } = nodeDatum;
+          const { name, attributes } = nodeDatum;
           return (
-            <g>
+            <g
+              onClick={() => {
+                setResourceTaskList(attributes.resourceTasks as ResourceTask[]);
+                setShowSubTaskList(true);
+              }}
+            >
               <rect
                 width={"20vmax"}
                 height={"10vmax"}
@@ -60,6 +73,13 @@ export const RoadmapTree = (props: Props) => {
           );
         }}
       />
+      {showSubTaskList && (
+        <SubTaskList
+          active={showSubTaskList}
+          close={() => setShowSubTaskList(false)}
+          resourceTaskList={resourceTask}
+        />
+      )}
     </div>
   );
 };
