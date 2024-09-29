@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Form } from "../../types";
 import styles from "./styles.module.css";
 
@@ -9,6 +10,7 @@ type Props = {
 
 export const Description = (props: Props) => {
   const { formData, showSubmit, classes } = props;
+  const { t } = useTranslation();
   const inputs = Object.values(formData);
   const shouldRender = inputs?.some((data) => data.value);
   return (
@@ -29,7 +31,9 @@ export const Description = (props: Props) => {
             })}
           </tbody>
         </table>
-        {showSubmit && <button id={styles.submit}>Create Roadmap</button>}
+        {showSubmit && (
+          <button id={styles.submit}>{t("generate_roadmap")}</button>
+        )}
       </div>
     )) || <></>
   );
