@@ -1,6 +1,8 @@
 #container {
     height: 100vh;
     width: 30vw;
+    padding: 0 1.618rem;
+    box-sizing: border-box;
     background-color: #181818;
     transform: translateX(-100%);
     position: absolute;
@@ -19,24 +21,17 @@
     justify-content: space-between;
     height: 7.5vh;
     align-items: center;
-    padding: 0 2vw;
     color: rgba(255, 255, 255, .87);
 }
 
 .sidebar_icon {
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
     #container {
-        padding: 0 5vw;
         width: 100vw;
-    }
-
-    .sidebar_icon {
-        width: 5vw;
-        height: 5vw;
     }
 }

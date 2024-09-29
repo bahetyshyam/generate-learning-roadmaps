@@ -1,5 +1,5 @@
 #container {
-    padding: 0 2vw;
+    padding: 0 1.618rem;
     height: 7.5vh;
     display: flex;
     align-items: center;
@@ -29,10 +29,6 @@
 }
 
 @media screen and (max-width: 800px) {
-    #container {
-        padding: 0 5vw;
-    }
-
     .sidebar_icon {
         width: 5vw;
         height: 5vw;

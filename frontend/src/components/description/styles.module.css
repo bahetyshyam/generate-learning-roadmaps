@@ -1,0 +1,36 @@
+#container {
+    background-color: #181818;
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#qa_container {
+    width: 100%;
+    font-size: 1rem;
+}
+
+#qa_container td {
+    color: #aaa;
+    padding: 0 1rem 0 0;
+}
+
+#qa_container th {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+#submit {
+    width: 100%;
+    height: 5vh;
+    font-size: 1rem;
+    margin-top: 1rem;
+    border-radius: .618rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none
+}
