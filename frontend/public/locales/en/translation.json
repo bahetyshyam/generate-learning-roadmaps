@@ -1,12 +1,20 @@
 {
   "appTitle": "Roadmaps",
   "formLanguage": "Please select the language you want to use",
-  "formWhatDoYouWantToLearn": "What do you want to learn?",
-  "formChooseYourExpertise": "Choose your expertise",
-  "generateRoadmapButton": "Generate Roadmap",
-  "navbarMyRoadmaps": "My Roadmaps",
+  "questions": {
+    "subject": "What Do You Want to Learn?",
+    "subject_desc": "Answer 2 easy questions to get a clear roadmap to a field of your choice. <br /> Start your Journey Today!",
+    "expertise": "Choose your level of expertise in this field.",
+    "expertise_desc": "What do you rate yourself in {{field, string}}?"
+  },
+  "generate_roadmap": "Generate Roadmap",
+  "my_progress": "My Progress",
   "loginHeader": "Login or Sign Up",
   "loginEmail": "Email",
   "loginPassword": "Password",
-  "loginButton": "Login or Sign Up"
+  "loginButton": "Login",
+  "logout": "Logout",
+  "my_roadmaps": "My Roadmaps",
+  "status": "Status",
+  "resource_link": "Resource"
 }
