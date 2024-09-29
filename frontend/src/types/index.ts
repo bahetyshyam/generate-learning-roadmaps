@@ -70,7 +70,11 @@ export type RoadMapSummary = {
   expertise: number;
 };
 
-export type RoadMapCreationResponse = {
+export type RoadMapResponse = {
   id: string;
   roadmap_json: TreeNode;
+};
+
+export type RoadMapCreationResponse = {
+  roadmap: RoadMapResponse;
 };

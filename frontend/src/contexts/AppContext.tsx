@@ -1,5 +1,14 @@
-import { createContext, useState, useEffect, ReactNode, FC } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  FC,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { login as loginApi } from "../api";
+import { RoadMapSummary } from "../types";
 
 // Define a type for the user information
 interface UserInfo {
@@ -10,6 +19,10 @@ interface UserInfo {
 interface AppContextType {
   userInfo: UserInfo | null;
   login: (username: string, password: string) => Promise<void>;
+  recentRoadMaps: RoadMapSummary[];
+  setRecentRoadMaps: Dispatch<SetStateAction<RoadMapSummary[]>>;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
   logout: () => void;
 }
 
@@ -24,6 +37,18 @@ export const AppProvider: FC<{ children: ReactNode }> = ({
   const [userInfo, setUserInfo] = useState<UserInfo | null>(() => {
     const storedUser = localStorage.getItem("userInfo");
     return storedUser ? JSON.parse(storedUser) : null;
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const { userId } = userInfo || {};
+
+  const [recentRoadMaps, setRecentRoadMaps] = useState<RoadMapSummary[]>(() => {
+    if (userId) {
+      const storedRms = localStorage.getItem(userId.toString());
+      return storedRms ? JSON.parse(storedRms) : null;
+    }
+    return null;
   });
 
   // Effect to update localStorage whenever userInfo changes
@@ -51,7 +76,17 @@ export const AppProvider: FC<{ children: ReactNode }> = ({
   };
 
   return (
-    <AppContext.Provider value={{ userInfo, login, logout }}>
+    <AppContext.Provider
+      value={{
+        userInfo,
+        login,
+        logout,
+        recentRoadMaps,
+        setRecentRoadMaps,
+        loading,
+        setLoading,
+      }}
+    >
       {ReactNode}
     </AppContext.Provider>
   );

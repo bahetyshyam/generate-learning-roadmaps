@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import styles from "./styles.module.css";
 import { GoPlus, GoSidebarExpand } from "react-icons/go";
 import { AppContext } from "../../contexts/AppContext";
@@ -22,7 +16,8 @@ type Props = {
 
 export const Sidebar: React.FC<Props> = (props) => {
   const { active, activeRoadmap, close, setActiveRoadmap } = props;
-  const { userInfo } = useContext(AppContext) || {};
+  const { userInfo, recentRoadMaps, setLoading, setRecentRoadMaps } =
+    useContext(AppContext) || {};
   const { userId } = userInfo || {};
   let locallyStoredRoadMaps: RoadMapSummary[] = [];
   if (userId) {
@@ -31,7 +26,6 @@ export const Sidebar: React.FC<Props> = (props) => {
         localStorage.getItem(userId.toString()) || "[]"
       ) as RoadMapSummary[]) || [];
   }
-  const [recentRoadMaps, setRecentRoadMaps] = useState(locallyStoredRoadMaps);
 
   const createNew = useCallback(() => {
     setActiveRoadmap(null);
@@ -40,10 +34,11 @@ export const Sidebar: React.FC<Props> = (props) => {
 
   useEffect(() => {
     userId &&
+      !recentRoadMaps?.length &&
       getUserRoadmaps(userId).then((summaries) => {
-        summaries && setRecentRoadMaps(summaries);
+        summaries && setRecentRoadMaps && setRecentRoadMaps(summaries);
       });
-  }, [userId]);
+  }, [userId, recentRoadMaps, setRecentRoadMaps]);
   const Controls = useMemo(() => {
     return (
       <div id={styles.controls}>
@@ -59,12 +54,16 @@ export const Sidebar: React.FC<Props> = (props) => {
         {recentRoadMaps?.map((summary) => {
           const { expertise, topic, roadmap } = summary || {};
           const onClick = async () => {
+            setLoading && setLoading(true);
             const res = await getRoadmapById(roadmap);
             res &&
               setActiveRoadmap({
+                // @ts-ignore
                 id: res.id,
+                // @ts-ignore
                 data: res.roadmap_json,
               });
+            setLoading && setLoading(false);
             res && close();
           };
           return (

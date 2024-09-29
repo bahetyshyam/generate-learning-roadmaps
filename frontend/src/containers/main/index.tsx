@@ -75,9 +75,12 @@ export const Main: React.FC = () => {
             setActiveFormIdx={setActiveForm}
             setActiveForm={setForm}
             allForms={form}
+            setActiveRoadmap={setActiveRoadMap}
           />
         )}
-        {activeRoadMap && <RoadmapTree roadmap={activeRoadMap.data} />}
+        {activeRoadMap && activeRoadMap.data && (
+          <RoadmapTree roadmap={activeRoadMap.data} />
+        )}
       </div>
       <div
         id={styles.inactive_overlay}

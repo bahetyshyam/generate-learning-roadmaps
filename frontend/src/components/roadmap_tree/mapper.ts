@@ -2,19 +2,21 @@ import { RawNodeDatum } from "react-d3-tree";
 import { TreeNode } from "../../types/TreeNode";
 
 export const mapRoadmapToD3 = (roadmap: TreeNode): RawNodeDatum => {
-  let root: RawNodeDatum = {
-    name: "",
-  };
-  let ptr = root;
+  let ptr = roadmap;
   const queue: TreeNode[] = [roadmap];
   while (queue.length) {
-    const node = queue.shift();
-    if (!node) {
+    // @ts-ignore
+    ptr = queue.shift();
+    if (!ptr) {
       continue;
     }
-    const { title, description, resourceTasks, children } = node;
+    const { title, description, resourceTasks, children } = ptr;
+    // @ts-ignore
     ptr.name = title;
+    // @ts-ignore
     ptr.attributes = {};
+
+    // @ts-ignore
     if (description) ptr.attributes.description = description;
     if (resourceTasks)
       // @ts-ignore
@@ -23,5 +25,6 @@ export const mapRoadmapToD3 = (roadmap: TreeNode): RawNodeDatum => {
       children.forEach((child) => queue.push(child));
     }
   }
-  return root;
+  //@ts-ignore
+  return roadmap;
 };
