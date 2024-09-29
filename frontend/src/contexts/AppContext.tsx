@@ -45,7 +45,9 @@ export const AppProvider: FC<{ children: ReactNode }> = ({
 
   // Function to handle user logout
   const logout = () => {
+    userInfo?.userId && localStorage.removeItem(userInfo.userId.toString());
     setUserInfo(null);
+    localStorage.removeItem("userInfo");
   };
 
   return (

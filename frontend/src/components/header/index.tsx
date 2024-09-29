@@ -32,7 +32,7 @@ export const Header: React.FC<Props> = (props) => {
       <h1 id={styles.title}>RoadMaps</h1>
       <div id={styles.lang_profile}>
         <p>EN</p>
-        <ProfileBadge src="" />
+        <ProfileBadge />
       </div>
     </div>
   );

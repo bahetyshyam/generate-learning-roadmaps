@@ -1,14 +1,27 @@
 #container {
-    border-radius: 50%;
-    background-color: white;
-    width: 2vw;
-    height: 2vw;
+    background-color: #484848;
+    padding: .309rem .618rem;
+    margin-left: .309rem;
+    border-radius: .309rem;
     cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media screen and (max-width: 800px) {
-    #container {
-        width: 7.5vw;
-        height: 7.5vw;
-    }
+#menu {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(calc(100% + .309rem));
+    padding: .309rem .618rem;
+    background-color: #484848;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: .309rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

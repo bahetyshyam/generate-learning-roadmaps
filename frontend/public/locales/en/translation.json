@@ -16,5 +16,7 @@
   "logout": "Logout",
   "my_roadmaps": "My Roadmaps",
   "status": "Status",
-  "resource_link": "Resource"
+  "resource_link": "Resource",
+  "logged_in": "Logged In",
+  "expert": "Expert"
 }
