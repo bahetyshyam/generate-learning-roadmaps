@@ -1,14 +1,15 @@
 import { createContext, useState, useEffect, ReactNode, FC } from "react";
+import { login as loginApi } from "../api";
 
 // Define a type for the user information
 interface UserInfo {
-  username: string;
+  userId: number;
 }
 
 // Define the context type
 interface AppContextType {
   userInfo: UserInfo | null;
-  login: (username: string) => void;
+  login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -35,8 +36,11 @@ export const AppProvider: FC<{ children: ReactNode }> = ({
   }, [userInfo]);
 
   // Function to handle user login
-  const login = (username: string) => {
-    setUserInfo({ username });
+  const login = async (username: string, password: string) => {
+    const res = await loginApi(username, password);
+    if (res) {
+      setUserInfo({ userId: res });
+    }
   };
 
   // Function to handle user logout

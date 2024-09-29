@@ -18,7 +18,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // You would typically validate the username and password here
-    login(username);
+    login(username, password);
   };
 
   return (
