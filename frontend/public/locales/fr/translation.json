@@ -1,12 +1,20 @@
 {
-  "appTitle": "Feuilles de route",
+  "appTitle": "Feuilles de Route",
   "formLanguage": "Veuillez sélectionner la langue que vous souhaitez utiliser",
-  "formWhatDoYouWantToLearn": "Que voulez-vous apprendre ?",
-  "formChooseYourExpertise": "Choisissez votre niveau de compétence",
-  "generateRoadmapButton": "Générer la feuille de route",
-  "navbarMyRoadmaps": "Mes feuilles de route",
+  "questions": {
+    "subject": "Que voulez-vous apprendre?",
+    "subject_desc": "Répondez à 2 questions simples pour obtenir une feuille de route claire vers le domaine de votre choix. <br /> Commencez votre voyage aujourd'hui!",
+    "expertise": "Choisissez votre niveau d'expertise dans ce domaine.",
+    "expertise_desc": "Comment vous évaluez-vous en {{field, string}}?"
+  },
+  "generate_roadmap": "Générer une Feuille de Route",
+  "my_progress": "Ma Progression",
   "loginHeader": "Connexion ou Inscription",
   "loginEmail": "Email",
-  "loginPassword": "Mot de passe",
-  "loginButton": "Connexion ou Inscription"
+  "loginPassword": "Mot de Passe",
+  "loginButton": "Connexion",
+  "logout": "Déconnexion",
+  "my_roadmaps": "Mes Feuilles de Route",
+  "status": "Statut",
+  "resource_link": "Ressource"
 }
