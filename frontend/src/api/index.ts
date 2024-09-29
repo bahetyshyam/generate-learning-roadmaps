@@ -1,4 +1,4 @@
-import { Form, RoadMapSummary } from "../types";
+import { Form, RoadMapCreationResponse, RoadMapSummary } from "../types";
 
 type LoginResponse =
   | {
@@ -50,25 +50,38 @@ export const getUserRoadmaps = async (userId: number) => {
   return jsonRes?.results;
 };
 
-// getUserRoadmaps();
-// export const createRoadmap = async (formData: Record<number, Form>) => {
-//   const { value: topic } = formData[0];
-//   const { value: expertise } = formData[1];
-//   const headers = new Headers();
-//   headers.append("Content-Type", "application/json");
+export const getRoadmapById = async (roadmapId: string) => {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "ngrok-skip-browser-warning": "69420",
+  };
+  const res = await fetch(API_URL + `roadmaps/${roadmapId}`, {
+    headers,
+  });
+  return (await res?.json()) as RoadMapCreationResponse;
+};
 
-//   const res = await fetch(API_URL + "", {
-//     url: API_URL,
-//     method: "post",
-//     headers,
-//     mode: "cors",
-//     // @ts-ignore
-//     body: JSON.stringify({
-//       topic,
-//       expertise,
-//       userId: "ronit",
-//       language: "en",
-//     }),
-//   });
-//   console.log(await res.json());
-// };
+export const createRoadmap = async (
+  userId: number,
+  formData: Record<number, Form>
+) => {
+  const { value: topic } = formData[0];
+  const { value: expertise } = formData[1];
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  };
+  const res = await fetch(API_URL + "userroadmaps/", {
+    method: "post",
+    headers,
+    mode: "cors",
+    body: JSON.stringify({
+      topic,
+      expertise,
+      user_id: userId,
+      language: "en", // TODO: Store in context and read from there.
+    }),
+  });
+
+  return (await res.json()) as RoadMapCreationResponse;
+};

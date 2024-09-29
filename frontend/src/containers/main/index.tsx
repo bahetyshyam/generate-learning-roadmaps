@@ -1,10 +1,13 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import styles from "./styles.module.css";
 import { Header } from "../../components/header";
 import { Sidebar } from "../../components/sidebar";
 import { useTranslation } from "react-i18next";
 import { Form as FormData } from "../../types";
 import Form from "../../components/form";
+import { TreeNode } from "../../types/TreeNode";
+import Tree from "react-d3-tree";
+import { RoadmapTree } from "../../components/roadmap_tree";
 
 export const Main: React.FC = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -22,6 +25,10 @@ export const Main: React.FC = () => {
     },
   });
   const [activeForm, setActiveForm] = useState<number | undefined>(0);
+  const [activeRoadMap, setActiveRoadMap] = useState<{
+    id: string;
+    data: TreeNode;
+  } | null>(null);
 
   const closeSidebar = useCallback(() => {
     setSidebarActive(false);
@@ -34,23 +41,31 @@ export const Main: React.FC = () => {
           setSidebarActive={setSidebarActive}
           sidebarActive={sidebarActive}
         />
-        <Form
-          activeForm={
-            typeof activeForm !== "undefined"
-              ? { ...form[activeForm], idx: activeForm }
-              : null
-          }
-          setActiveFormIdx={setActiveForm}
-          setActiveForm={setForm}
-          allForms={form}
-        />
+        {!activeRoadMap && (
+          <Form
+            activeForm={
+              typeof activeForm !== "undefined"
+                ? { ...form[activeForm], idx: activeForm }
+                : null
+            }
+            setActiveFormIdx={setActiveForm}
+            setActiveForm={setForm}
+            allForms={form}
+          />
+        )}
+        {activeRoadMap && <RoadmapTree roadmap={activeRoadMap.data} />}
       </div>
       <div
         id={styles.inactive_overlay}
         data-sidebar-active={sidebarActive}
         onClick={closeSidebar}
       ></div>
-      <Sidebar active={sidebarActive} close={closeSidebar} />
+      <Sidebar
+        active={sidebarActive}
+        close={closeSidebar}
+        activeRoadmap={(activeRoadMap && activeRoadMap.id) || ""}
+        setActiveRoadmap={setActiveRoadMap}
+      />
     </>
   );
 };

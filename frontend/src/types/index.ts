@@ -1,3 +1,5 @@
+import { TreeNode } from "./TreeNode";
+
 export type LoginOrSignUpRequest = {
   userId: string;
   password: string;
@@ -66,4 +68,9 @@ export type RoadMapSummary = {
   roadmap: string;
   topic: string;
   expertise: number;
+};
+
+export type RoadMapCreationResponse = {
+  id: string;
+  roadmap_json: TreeNode;
 };

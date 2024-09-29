@@ -1,20 +1,27 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import styles from "./styles.module.css";
 import { GoPlus, GoSidebarExpand } from "react-icons/go";
 import { AppContext } from "../../contexts/AppContext";
 import { RoadMapSummary } from "../../types";
-import { getUserRoadmaps } from "../../api";
+import { getRoadmapById, getUserRoadmaps } from "../../api";
 import { BsArrowRight } from "react-icons/bs";
+import { TreeNode } from "../../types/TreeNode";
 
 type Props = {
   active?: boolean;
   activeRoadmap?: string;
-  // setActiveRoadmap: (roadmap: string) => any; TODO
+  setActiveRoadmap: (roadmap: { id: string; data: TreeNode } | null) => any;
   close: () => any;
 };
 
 export const Sidebar: React.FC<Props> = (props) => {
-  const { active, activeRoadmap, close } = props;
+  const { active, activeRoadmap, close, setActiveRoadmap } = props;
   const { userInfo } = useContext(AppContext) || {};
   const { userId } = userInfo || {};
   let locallyStoredRoadMaps: RoadMapSummary[] = [];
@@ -26,6 +33,11 @@ export const Sidebar: React.FC<Props> = (props) => {
   }
   const [recentRoadMaps, setRecentRoadMaps] = useState(locallyStoredRoadMaps);
 
+  const createNew = useCallback(() => {
+    setActiveRoadmap(null);
+    close();
+  }, [setActiveRoadmap, close]);
+
   useEffect(() => {
     userId &&
       getUserRoadmaps(userId).then((summaries) => {
@@ -36,7 +48,7 @@ export const Sidebar: React.FC<Props> = (props) => {
     return (
       <div id={styles.controls}>
         <GoSidebarExpand onClick={close} className={styles.sidebar_icon} />
-        <GoPlus className={styles.sidebar_icon} />
+        <GoPlus className={styles.sidebar_icon} onClick={createNew} />
       </div>
     );
   }, [close]);
@@ -46,10 +58,20 @@ export const Sidebar: React.FC<Props> = (props) => {
       <ul>
         {recentRoadMaps?.map((summary) => {
           const { expertise, topic, roadmap } = summary || {};
+          const onClick = async () => {
+            const res = await getRoadmapById(roadmap);
+            res &&
+              setActiveRoadmap({
+                id: res.id,
+                data: res.roadmap_json,
+              });
+            res && close();
+          };
           return (
             <li
               key={`${topic}_${expertise}`}
               data-selected={roadmap === activeRoadmap}
+              onClick={onClick}
             >
               <p>{topic}</p>
               <div className={styles.path}>
@@ -62,7 +84,7 @@ export const Sidebar: React.FC<Props> = (props) => {
         })}
       </ul>
     );
-  }, [recentRoadMaps]);
+  }, [recentRoadMaps, activeRoadmap, setActiveRoadmap, close]);
   return (
     <div data-open={active} id={styles.container}>
       {Controls}
