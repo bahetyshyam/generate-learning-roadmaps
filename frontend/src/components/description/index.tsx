@@ -1,16 +1,38 @@
+import { useContext } from "react";
+import { createRoadmap } from "../../api";
 import { Form } from "../../types";
 import styles from "./styles.module.css";
+import { AppContext } from "../../contexts/AppContext";
+import { TreeNode } from "../../types/TreeNode";
 
 type Props = {
   formData: Record<number, Form>;
   showSubmit?: boolean;
   classes?: string;
+  setActiveRoadmap?: React.Dispatch<
+    React.SetStateAction<{
+      id: string;
+      data: TreeNode;
+    } | null>
+  >;
 };
 
 export const Description = (props: Props) => {
-  const { formData, showSubmit, classes } = props;
+  const { formData, showSubmit, classes, setActiveRoadmap } = props;
   const inputs = Object.values(formData);
+  const { userInfo, setLoading } = useContext(AppContext) || {};
+  const { userId } = userInfo || {};
   const shouldRender = inputs?.some((data) => data.value);
+  const generateRoadmap = async () => {
+    if (!userId) {
+      return;
+    }
+    setLoading && setLoading(true);
+    const res = await createRoadmap(userId, formData);
+    setLoading && setLoading(false);
+    setActiveRoadmap &&
+      setActiveRoadmap({ id: res.roadmap.id, data: res.roadmap.roadmap_json });
+  };
   return (
     (shouldRender && (
       <div id={styles.container} className={classes}>
@@ -29,7 +51,11 @@ export const Description = (props: Props) => {
             })}
           </tbody>
         </table>
-        {showSubmit && <button id={styles.submit}>Create Roadmap</button>}
+        {showSubmit && (
+          <button id={styles.submit} onClick={generateRoadmap}>
+            Create Roadmap
+          </button>
+        )}
       </div>
     )) || <></>
   );

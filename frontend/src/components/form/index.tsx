@@ -10,12 +10,19 @@ import styles from "./styles.module.css";
 import { Input } from "../input";
 import { useTranslation } from "react-i18next";
 import { Description } from "../description";
+import { TreeNode } from "../../types/TreeNode";
 
 type Props = {
   activeForm: ({ idx: number } & FormData) | null;
   allForms: Record<number, FormData>;
   setActiveFormIdx: (activeForm: number | undefined) => any;
   setActiveForm: React.Dispatch<React.SetStateAction<Record<number, FormData>>>;
+  setActiveRoadmap: React.Dispatch<
+    React.SetStateAction<{
+      id: string;
+      data: TreeNode;
+    } | null>
+  >;
 };
 
 const transitionReducer: Reducer<
@@ -25,7 +32,13 @@ const transitionReducer: Reducer<
   return action;
 };
 export const Form: React.FC<Props> = (props) => {
-  const { activeForm, allForms, setActiveForm, setActiveFormIdx } = props;
+  const {
+    activeForm,
+    allForms,
+    setActiveForm,
+    setActiveFormIdx,
+    setActiveRoadmap,
+  } = props;
   const [prevForm, setPrevForm] = useState(activeForm);
   const { t } = useTranslation();
   const [transition, setTransition] = useReducer(transitionReducer, undefined);
@@ -107,7 +120,13 @@ export const Form: React.FC<Props> = (props) => {
         {!!prevForm && type === "string" && (
           <Input onSubmit={onSubjectSubmit} />
         )}
-        {!prevForm && <Description formData={allForms} showSubmit />}
+        {!prevForm && (
+          <Description
+            formData={allForms}
+            showSubmit
+            setActiveRoadmap={setActiveRoadmap}
+          />
+        )}
       </div>
     </div>
   );

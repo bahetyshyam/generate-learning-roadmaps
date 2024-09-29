@@ -58,7 +58,7 @@ export const getRoadmapById = async (roadmapId: string) => {
   const res = await fetch(API_URL + `roadmaps/${roadmapId}`, {
     headers,
   });
-  return (await res?.json()) as RoadMapCreationResponse;
+  return (await res?.json()) as RoadMapResponse;
 };
 
 export const createRoadmap = async (
