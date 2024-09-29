@@ -1,3 +1,5 @@
+import { TreeNode } from "./TreeNode";
+
 export type LoginOrSignUpRequest = {
   userId: string;
   password: string;
@@ -15,11 +17,11 @@ export type RoadmapItem = {
 };
 
 //Gets the list of all roadmaps
-// POST -> api/roadmaps?userId=...
+// GET -> api/roadmaps?userId=...
 export type RoadmapsResponse = RoadmapItem[];
 
 //Create a new roadmap
-// POST -> api/roadmaps/create
+// POST -> api/roadmaps/
 export type CreateRoadmapRequest = {
   language: string;
   topic: string;
@@ -46,3 +48,33 @@ export type DeleteRoadmapResponse = {
 };
 
 export type UpdateRoadmapResponse = RoadmapItem;
+
+export type Form = {
+  quest: string;
+  desc: string;
+} & (
+  | {
+      type: "string";
+      value?: string;
+    }
+  | {
+      type: "number";
+      value?: number;
+    }
+);
+
+export type RoadMapSummary = {
+  user: number;
+  roadmap: string;
+  topic: string;
+  expertise: number;
+};
+
+export type RoadMapResponse = {
+  id: string;
+  roadmap_json: TreeNode;
+};
+
+export type RoadMapCreationResponse = {
+  roadmap: RoadMapResponse;
+};

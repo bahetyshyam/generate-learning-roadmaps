@@ -1,0 +1,22 @@
+{
+  "appTitle": "ロードマップ",
+  "formLanguage": "使用したい言語を選択してください",
+  "questions": {
+    "subject": "何を学びたいですか？",
+    "subject_desc": "選択した分野への明確なロードマップを手に入れるため、2つの簡単な質問に答えてください。 <br /> さあ、今日から旅を始めましょう！",
+    "expertise": "この分野での専門レベルを選択してください。",
+    "expertise_desc": "{{field, string}}における自分のレベルをどのように評価しますか？"
+  },
+  "generate_roadmap": "ロードマップを生成する",
+  "my_progress": "私の進捗",
+  "loginHeader": "ログインまたはサインアップ",
+  "loginUserName": "ユーザー名",
+  "loginPassword": "パスワード",
+  "loginButton": "ログイン",
+  "logout": "ログアウト",
+  "my_roadmaps": "私のロードマップ",
+  "status": "ステータス",
+  "resource_link": "リソース",
+  "logged_in": "ログイン中",
+  "expert": "エキスパート"
+}

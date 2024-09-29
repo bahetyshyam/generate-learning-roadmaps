@@ -10,6 +10,22 @@
   font-size: 16px;
 }
 
+.loader {
+  animation: spin .5s ease-in-out infinite;
+  color: white;
+  width: 5vw;
+  height: 5vw;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
 @media screen and (max-width: 800px) {
   :root {
     font-size: 14px;

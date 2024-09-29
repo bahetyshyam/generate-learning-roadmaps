@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from "react";
 import styles from "./styles.module.css";
 import { GoSidebarCollapse, GoSidebarExpand } from "react-icons/go";
 import { ProfileBadge } from "../profile_badge";
+import Dropdown from "../language_dropdown";
 
 type Props = {
   sidebarActive?: boolean;
@@ -29,10 +30,10 @@ export const Header: React.FC<Props> = (props) => {
   return (
     <div id={styles.container}>
       {SidebarIcon}
-      <h1 id={styles.title}>RoadMaps</h1>
+      <h1 id={styles.title}>MentorMind.ai</h1>
       <div id={styles.lang_profile}>
-        <p>EN</p>
-        <ProfileBadge src="" />
+        <Dropdown />
+        <ProfileBadge />
       </div>
     </div>
   );
