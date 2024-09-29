@@ -55,7 +55,7 @@ export const Description = (props: Props) => {
         </table>
         {showSubmit && (
           <button id={styles.submit} onClick={generateRoadmap}>
-            t("generate_roadmap")
+            {t("generate_roadmap")}
           </button>
         )}
       </div>

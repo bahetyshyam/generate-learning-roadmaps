@@ -38,7 +38,7 @@ export const Sidebar: React.FC<Props> = (props) => {
       getUserRoadmaps(userId).then((summaries) => {
         summaries && setRecentRoadMaps && setRecentRoadMaps(summaries);
       });
-  }, [userId, recentRoadMaps, setRecentRoadMaps]);
+  }, []);
   const Controls = useMemo(() => {
     return (
       <div id={styles.controls}>
